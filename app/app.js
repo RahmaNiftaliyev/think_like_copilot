@@ -1,8 +1,8 @@
 // !HTML elements 
-let button, input, textBox, initial_message, life, life_counter, rnd_number;
+let button, input, text_box, initial_message, life, life_counter, rnd_number;
 button = document.getElementById( "button" );
 input = document.getElementById( "number" );
-textBox = document.getElementById( "textBox" );
+text_box = document.getElementById( "textBox" );
 life_counter = document.getElementById( "lifeCounter" );
 // !Global variables
 initial_message = 'System message is:';
@@ -33,14 +33,16 @@ function gameStartController ()
         if ( player_choise === "" ) throw 'pls insert number 1 - 10';
         if ( player_choise_int > 10 || player_choise_int < 1 ) throw `${ player_choise_int < 1 ? 'under condition error' : 'upper condition error' } `
         if ( isNaN( player_choise_int ) ) throw 'insert only integer value';
-        game_start( player_choise_int, rnd_number, life, textBox, initial_message );
-    } catch ( paramsThrow )
+        game_start( player_choise_int, rnd_number, life, text_box, initial_message );
+    }
+    catch ( params_throw_error )
     {
-        textBox.textContent = initial_message + ' ' + paramsThrow
-    } finally
+        text_box.textContent = initial_message + ' ' + params_throw_error
+    }
+    finally
     {
 
-        finally_block_handler( textBox, input, life_counter, life, initial_message );
+        finally_block_handler( text_box, input, life_counter, life, initial_message );
 
     }
 
@@ -67,7 +69,11 @@ function game_start ( params_player, params_rnd_number, params_life, params_text
 {
     if ( params_player === params_rnd_number )
     {
-        winner( params_text_box, `${ params_system_message }  lucky number is ${ params_player } winner`, reloader )
+        winner(
+            params_text_box,
+            `${ params_system_message }  lucky number is ${ params_player } winner`,
+            reloader
+        )
 
     } else
     {
@@ -113,3 +119,8 @@ function reloader ()
         location.reload()
     }, 2500 )
 }
+
+
+
+
+
